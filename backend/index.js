@@ -7,12 +7,6 @@ app.post('/user/login', (req,res) => {
 app.post('/user/signin', (req,res) => {
 
 })
-app.post('/user/purchase-courses', (req,res) => {
-
-})
-app.post('/user/purchased', (req,res) => {
-
-})
 
 
 
