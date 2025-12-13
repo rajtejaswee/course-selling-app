@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { authplugin } from "./plugins/auth.plugin.js";
+import { authpluginUser } from "./plugins/authUser.plugin.js";
 const Schema = mongoose.Schema
 
 
@@ -16,6 +16,6 @@ const userSchema = new Schema({
 })
 
 
-userSchema.plugin(authplugin)
+userSchema.plugin(authpluginUser)
 const UserModel = mongoose.model('users', userSchema)
 export default UserModel;

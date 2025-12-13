@@ -1,22 +1,15 @@
-import express from "express"
-const adminRouter = express.Router()
+import { Router } from "express";
+import { signin,signup,logoutUser,refreshAccessToken, createcourse, getcourse, updateCourse, deleteCourse } from "../controllers/admin.controller.js";
+import { verifyJWTAdmin } from "../middlewares/authAdmin.middleware.js";
 
-adminRouter.post('/signin', function(req,res) {
+const adminRouter = Router();
 
-})
-
-adminRouter.post('/signup', function(re,res) {
-    
-})
-
-adminRouter.post('/course', function(re,res) {
-
-})
-adminRouter.put('/course', function(re,res) {
-
-})
-adminRouter.get('/course/bulk', function(re,res) {
-
-})
-
+adminRouter.route("/register").post(signup)
+adminRouter.route("/login").post(signin)
+adminRouter.route("/refreshToken").post(refreshAccessToken)
+adminRouter.route("/logout").post(verifyJWTAdmin,logoutUser)
+adminRouter.route("/course").post(verifyJWTAdmin, createcourse)
+adminRouter.route("/course").get(verifyJWTAdmin, getcourse)
+adminRouter.route("/course/:courseId").put(verifyJWTAdmin, updateCourse)
+adminRouter.route("/course/:courseId").delete(verifyJWTAdmin, deleteCourse)
 export default adminRouter;

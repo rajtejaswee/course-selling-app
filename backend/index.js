@@ -10,13 +10,7 @@ connectDB()
     app.listen(process.env.PORT || 8000, () => {
         console.log(`⚙️ Serving is running on port ${process.env.PORT}`)
     })
-})
-<<<<<<< HEAD
-app.post('/user/signin', (req,res) => {
-
-=======
-.catch((err) => {
+}).catch((err) => {
     console.log("MONGO db connection failed !!! ", err);
->>>>>>> 93c785a (Auth done)
 })
 

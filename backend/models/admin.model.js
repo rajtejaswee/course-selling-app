@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { authplugin } from "./plugins/auth.plugin";
+import { authpluginAdmin } from "./plugins/authAdmin.plugin.js";
 const Schema = mongoose.Schema
 
 const adminSchema = new Schema({
@@ -14,6 +14,6 @@ const adminSchema = new Schema({
     }
 })
 
-adminSchema.plugin(authplugin)
+adminSchema.plugin(authpluginAdmin)
 const AdminModel = mongoose.model('admin', adminSchema)
 export default AdminModel

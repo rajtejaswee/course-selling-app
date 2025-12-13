@@ -1,19 +1,12 @@
 import Router from "express"
+import { verifyJWTUser } from "../middlewares/authUser.middleware.js"
+import { getMyCourses, previewAllCourses, purchaseCourse } from "../controllers/course.controller.js"
 
 const courseRouter = Router()
 
 // an endpoint to hit when user hits buying a course
-courseRouter.post('/purchase', function (req,res) {
-    res.send({
-        message:"User's courses"
-    })
-})
-
-// To show all the courses
-courseRouter.get('/preview', function(req,res) {
-    res.send({
-        message:"All the courses"
-    })
-})
+courseRouter.route('/purchase').post(verifyJWTUser, purchaseCourse )
+courseRouter.route('/preview',).get(previewAllCourses)
+courseRouter.route('/my-courses').get(verifyJWTUser, getMyCourses)
 
 export default courseRouter

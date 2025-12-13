@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
 
-export const authplugin = (schema) => {
+export const authpluginAdmin = (schema) => {
     schema.add({
         password:{
             type: String,
@@ -26,7 +26,7 @@ export const authplugin = (schema) => {
                 email: this.email,
                 username: this.username,
             },
-            process.env.ACCESS_TOKEN_SECRET,
+            process.env.ACCESS_TOKEN_SECRET_ADMIN,
             {
                 expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
             }
@@ -39,7 +39,7 @@ export const authplugin = (schema) => {
                 _id: this._id,
                 
             },
-            process.env.REFRESH_TOKEN_SECRET,
+            process.env.REFRESH_TOKEN_SECRET_ADMIN,
             {
                 expiresIn: process.env.REFRESH_TOKEN_EXPIRY
             }
