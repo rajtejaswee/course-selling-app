@@ -14,11 +14,11 @@ export const verifyJWTAdmin = asyncHandler(async(req,res, next) => {
         const admin = await AdminModel.findById(decodedToken?._id).select("-password -refreshToken")
 
         if(!admin) {
-            throw new ApiError("401", "Inavalid Access Token")
+            throw new ApiError(401, "Inavalid Access Token")
         }
         req.admin = admin
         next()
     } catch (error) {
-        throw new ApiError("401", error?.message || "Invalid Access Token")
+        throw new ApiError(401, error?.message || "Invalid Access Token")
     }
 })

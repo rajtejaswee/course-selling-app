@@ -5,6 +5,17 @@ import UserModel from "../models/user.model.js";
 import { signinSchema, signupSchema } from "../utils/validation.js";
 import jwt from "jsonwebtoken"
 
+
+const getCurrentUser = asyncHandler(async(req, res) => {
+    return res
+    .status(200)
+    .json(new ApiResponse(
+        200,
+        req.user,
+        "User fetched successfully"
+    ))
+})
+
 const generateRefreshAndAccessToken = async (userId) => {
     try {
         const user = await UserModel.findById(userId)
@@ -170,5 +181,6 @@ export {
     signup,
     signin,
     logoutUser,
-    refreshAccessToken
+    refreshAccessToken,
+    getCurrentUser
 }

@@ -6,7 +6,7 @@ import { ApiError } from "../utils/ApiError.js"
 
 const purchaseCourse = asyncHandler(async(req,res) => {
     const userId = req.user._id;
-    const {courseId} = req.body.courseId
+    const {courseId} = req.body;
 
     const course = await CourseModel.findById(courseId);
     if (!course) {
@@ -47,9 +47,9 @@ const previewAllCourses = asyncHandler(async(req,res) => {
 const getMyCourses = asyncHandler(async(req,res) => {
     const userId = req.user._id
 
-    const purchase = await PurchaseModel.find({userId}).populate("courseId")
+    const purchases = await PurchaseModel.find({userId}).populate("courseId")
 
-    if(!purchase) {
+    if(!purchases) {
         throw new ApiError(404, "No courses found")
     }
 

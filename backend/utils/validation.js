@@ -14,7 +14,7 @@ const signinSchema = z.object({
 
 const courseSchema = z.object({
     title:z.string().min(1),
-    desription:z.string().min(5),
+    description:z.string().min(5),
     price:z.number(),
     imageUrl:z.string()
 })

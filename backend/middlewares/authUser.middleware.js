@@ -14,11 +14,11 @@ export const verifyJWTUser = asyncHandler(async(req,res, next) => {
         const user = await UserModel.findById(decodedToken?._id).select("-password -refreshToken")
 
         if(!user) {
-            throw new ApiError("401", "Inavalid Access Token")
+            throw new ApiError(401, "Inavalid Access Token")
         }
         req.user = user
         next()
     } catch (error) {
-        throw new ApiError("401", error?.message || "Invalid Access Token")
+        throw new ApiError(401, error?.message || "Invalid Access Token")
     }
 })
